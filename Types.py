@@ -150,6 +150,7 @@ class U:
     def __init__(self, _ord, N, allowed=[]):
         self.ord = _ord
         self.N = N
+        self._size = N
         self.ctype = "uint8_t[{}]".format(self.N)
     def parse(self, msg):
         if len(msg) < self.N:
