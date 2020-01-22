@@ -169,3 +169,14 @@ class CFG:
 
         class Fields:
             tpIdx = U1(1)  # Time pulse selection (0 = TIMEPULSE, 1 = TIMEPULSE2)
+
+    @addGet
+    class MSG:
+        u"""§32.10.14.3 Get/Set send rate on current Port https://www.u-blox.com/en/docs/UBX-13003221#page=198&zoom=auto,-195,772"""
+
+        _id = 0x01
+
+        class Fields:
+            msgClass = U1(1)
+            msgID = U1(2)
+            rate = U1(3)

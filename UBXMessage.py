@@ -24,6 +24,7 @@ class MessageClass(Enum):
     LOG = b'\x21'  # Logging Messages: Log creation, deletion, info and retrieval
     SEC = b'\x27'  # Security Feature Messages
     HNR = b'\x28'  # High Rate Navigation Results Messages: High rate time, position, speed, heading
+    CFG = b'\x06'  # High Rate Navigation Results Messages: High rate time, position, speed, heading
 
 
 def _byte(i):
@@ -262,6 +263,7 @@ def classFromMessageClass():
 def parseUBXPayload(msgClass, msgId, payload):
     """Parse a UBX payload from message class, message ID and payload."""
     Cls = classFromMessageClass().get(msgClass)
+    # print("class: ", Cls)
     if Cls is None:
         err = "Cannot parse message class {}.\n Available: {}"\
               .format(msgClass, classFromMessageClass())
