@@ -1,6 +1,6 @@
 """TODO."""
 from enum import Enum
-import UBX
+from pyubx import UBX
 
 
 def isObj(obj, cls):

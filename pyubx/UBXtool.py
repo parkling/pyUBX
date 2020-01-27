@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
-"""TODO."""
+"""UBXTool is a command line app for sending and receiving UBX commands."""
 
 import sys
 import os
 import serial
 from time import sleep
 from threading import Lock
-from enum import Enum
 import argparse
 import datetime
-import UBX
-from UBXManager import UBXManager
-from FSM import *
+from pyubx.UBXManager import UBXManager
+from pyubx.FSM import *
 
 
 @FSM_Get(UBX.MON.VER)
@@ -97,7 +95,7 @@ class Manager(UBXManager):
     def onUBX(self, obj):
         with self._lock:
             if self._fsm is not None:
-                self._fsm.onUBX(obj, manager)
+                self._fsm.onUBX(obj, self)
                 if self._fsm.done():
                     self._fsm = None
             else:

@@ -1,7 +1,7 @@
 """Monitoring Messages: Communication Status, CPU Load, Stack Usage, Task Status. """
 
-from UBXMessage import initMessageClass, addGet
-from Types import CH, U1, U2, X1, X4
+from pyubx.UBXMessage import initMessageClass, addGet
+from pyubx.Types import CH, U1, U2, X1, X4
 
 
 @initMessageClass

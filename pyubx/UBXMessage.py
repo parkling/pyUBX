@@ -5,7 +5,6 @@ import struct
 import inspect
 from enum import Enum
 import sys
-from itertools import accumulate
 
 
 class MessageClass(Enum):
@@ -292,7 +291,6 @@ def addGet(cls):
     class Get(UBXMessage):
         def __init__(self):
             # this only works because class and module have the same name!
-            import UBX
             _class = eval(cls.__module__)._class
             UBXMessage.__init__(self, _class, cls._id, b'')
     setattr(cls, "Get", Get)

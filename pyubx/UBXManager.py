@@ -25,7 +25,7 @@ class UBXManager(threading.Thread):
 
     def __init__(self, ser, debug=False):
         """Instantiate with serial."""
-        from UBXMessage import UBXMessage
+        from pyubx.UBXMessage import UBXMessage
         threading.Thread.__init__(self)
         self.ser = ser
         self.debug = debug
@@ -49,7 +49,7 @@ class UBXManager(threading.Thread):
             self._fromUBX_CHKSUM_2,
         ]
         if self.debug:
-            logfile = open("UBX.log", "wb")
+            logfile = open("../UBX.log", "wb")
             sys.stderr.write("Writing log to UBX.log\n")
         self._reset()
         while not self._shutDown:
@@ -183,7 +183,7 @@ class UBXManager(threading.Thread):
         print("NMEA ERR: {}".format(errMsg))
 
     def _onUBX(self, msgClass, msgId, buffer):
-        from UBXMessage import parseUBXPayload, formatByteString
+        from pyubx.UBXMessage import parseUBXPayload, formatByteString
         try:
             obj = parseUBXPayload(msgClass, msgId, buffer)
         except Exception as e:
@@ -207,7 +207,7 @@ class UBXManager(threading.Thread):
 
     def send(self, msg):
         """Send message to ser."""
-        from UBXMessage import formatByteString
+        from pyubx.UBXMessage import formatByteString
         if self.debug:
             print("SEND: {}".format(formatByteString(msg)))
         if hasattr(self.ser, 'write'):
