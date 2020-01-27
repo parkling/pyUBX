@@ -151,7 +151,7 @@ The two main classes are `UBXManager` and `UBXMessage`. They are defined in file
 
 ```python
 import serial
-from UBXManager import UBXManager
+from pyubx.UBXManager import UBXManager
 ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=None)
 manager = UBXManager(ser, debug=True)
 ```
@@ -210,18 +210,18 @@ The decorator `@_InitType` does most of the work: It implements the `__init__`, 
 
 `CH` and `U` are variable-length types and they are hand-coded. `U` is used for the many *reserved* fields.
 
-### `UBX.py`
+### `UBXtool.py`
 
-`UBX.py` is a utlilty that allows to send UBX commands to the device. For example, to switch into power save mode and then start dumping NMEA messages, run
+`UBXtool.py` is a utlilty that allows to send UBX commands to the device. For example, to switch into power save mode and then start dumping NMEA messages, run
 
 ```bash
-./UBX.py --RXM 1 --NMEA
+./UBXtool.py --RXM 1 --NMEA
 ```
 
 The content of the `CFG-RATE` register can queried like so:
 
 ```bash
-> ./UBX.py --RATE-GET
+> ./UBXtool.py --RATE-GET
 CFG-RATE:
   measRate=0x03E8
   navRate=0x0001
@@ -236,7 +236,7 @@ Note that always all UBX messages are printed, including the `ACK-ACK`.
 ##### Usage
 
 ```bash
-usage: UBX.py [-h] [--VER-GET] [--GNSS-GET] [--PMS-GET] [--PM2-GET]
+usage: UBXtool.py [-h] [--VER-GET] [--GNSS-GET] [--PMS-GET] [--PM2-GET]
               [--RATE-GET] [--RXM RXM] [--NMEA] [-d]
 
 Send UBX commands to u-blox M8 device.
@@ -253,7 +253,7 @@ optional arguments:
   -d, --debug  Turn on debug mode
 ```
 
-`UBX.py` uses finite state machines defined in `FSM.py`. The `Manager` class derives from `UBXManager` and overrides the `onUBX`, etc., callbacks.
+`UBXtool.py` uses finite state machines defined in `FSM.py`. The `Manager` class derives from `UBXManager` and overrides the `onUBX`, etc., callbacks.
 
 ## Generate Language Bindinds with pyUBX
 
