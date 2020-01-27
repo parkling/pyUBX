@@ -6,7 +6,7 @@ def readme():
         return f.read()
 
 
-setup(name='pyUBX',
+setup(name='pyubx',
       version='0.0.1',
       description='A small but functional Python3 wrapper for the u-blox M8 UBX protocol, as defined in UBX-13003221 - R13, §31.',
       long_description=readme(),
@@ -20,7 +20,7 @@ setup(name='pyUBX',
       author='Mayer Analytics',
       author_email='info@mayeranalytics.com',
       license='GNU GPL v3',
-      packages=['pyUBX'],
+      packages=['pyubx'],
       zip_safe=False,
       test_suite='nose.collector',
       tests_require=['nose'],
