@@ -180,3 +180,21 @@ class CFG:
             msgClass = U1(1)
             msgID = U1(2)
             rate = U1(3)
+
+    @addGet
+    class HNR:
+        u"""§32.10.14.3 Get/Set send high navigation rate https://www.u-blox.com/en/docs/UBX-13003221#page=192&zoom=auto,-18,813"""
+
+        _id = 0x5C
+
+        class Fields:
+            highNavRate = U1(1)
+            reserved1 = U(2,3)
+
+    @addGet
+    class INF:
+        u"""§32.10.14.3 Get conf for protocol, 0: UBX, 1: NMEA"""
+        _id = 0x02
+
+        class Fields:
+            protocolID = U1(1)

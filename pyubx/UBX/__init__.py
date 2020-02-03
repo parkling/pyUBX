@@ -5,3 +5,4 @@ from pyubx.UBX.NAV import *
 from pyubx.UBX.TEST import *
 from pyubx.UBX.TIM import *
 from pyubx.UBX.ESF import *
+from pyubx.UBX.HNR import *
